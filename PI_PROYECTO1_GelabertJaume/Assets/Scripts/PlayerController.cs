@@ -34,7 +34,12 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         float playerHeight = GetComponent<Collider>().bounds.size.y;
-        bool isGrounded = Physics.Raycast(transform.position, Vector3.down, (playerHeight / 2) + 0.1f, GroundMask);
+        bool IsGrounded = Physics.Raycast(transform.position, Vector3.down, (playerHeight / 2) + 0.1f, GroundMask);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isAlive && IsGrounded == true)
+        {
+            Jump();
+        }
     }
 
     public void Jump()
@@ -42,4 +47,16 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * JumpForce);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Cube")
+        {
+            Dead();
+        }
+    }
+
+    public void Dead()
+    {
+        isAlive = false;
+    }
 }
