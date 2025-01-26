@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Cube")
+        if (collision.gameObject.name == "Graphic")
         {
             Dead();
         }
@@ -58,5 +58,6 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         isAlive = false;
+        GameManager.MyInstance.GameoverPanel.SetActive(true);
     }
 }

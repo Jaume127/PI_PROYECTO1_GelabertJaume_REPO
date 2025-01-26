@@ -72,6 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04297885b9b9ba946b716e2e95207106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 2272807758952231236, guid: 45774fa0128d24648a6081cea3cb2525,
+    type: 3}
   obstaclePrefabs:
   - {fileID: 3613220787151942725, guid: abbef889076d5e047b4f87ef69a121ab, type: 3}
   - {fileID: 1362356333126673022, guid: 2537eaae3e1d00544b85555d9fa76069, type: 3}
