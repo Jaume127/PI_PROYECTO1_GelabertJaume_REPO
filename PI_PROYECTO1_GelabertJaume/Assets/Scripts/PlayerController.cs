@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float JumpForce = 350;
     [SerializeField] LayerMask GroundMask;
 
+    public float speedIncrease;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,6 +47,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(Vector3.up * JumpForce);
+        SoundManager.PlaySound("Jump");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -57,6 +60,8 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
             GameManager.MyInstance.Score += 1;
+            RunSpeed += speedIncrease;
+            SoundManager.PlaySound("Coin");
         }
     }
 
