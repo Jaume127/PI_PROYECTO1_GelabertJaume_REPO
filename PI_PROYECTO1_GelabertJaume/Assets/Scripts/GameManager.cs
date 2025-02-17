@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     public static GameManager MyInstance;
+
+    public TextMeshProUGUI ScoreText;
+    public int Score;
 
     public GameObject GameoverPanel;
 
@@ -24,7 +28,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        ScoreText.text = Score.ToString();
     }
 
 

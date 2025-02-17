@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour
         {
             Dead();
         }
+        if (collision.gameObject.name == "Coin(Clone)")
+        {
+            Destroy(collision.gameObject);
+            GameManager.MyInstance.Score += 1;
+        }
     }
 
     public void Dead()
