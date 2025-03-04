@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int Score;
 
     public GameObject GameoverPanel;
+    public GameObject StartGamePanel;
 
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0;
+        StartGamePanel.SetActive(true);
         GameoverPanel.SetActive(false);
     }
 
@@ -32,8 +35,19 @@ public class GameManager : MonoBehaviour
     }
 
 
+    public void StartGame()
+    {
+        StartGamePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
     public void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

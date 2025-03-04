@@ -46,19 +46,21 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
+
         rb.AddForce(Vector3.up * JumpForce);
         SoundManager.PlaySound("Jump");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.name == "Graphic")
+        if (other.gameObject.name == "Graphic")
         {
             Dead();
         }
-        if (collision.gameObject.name == "Coin(Clone)")
+        if (other.gameObject.name == "Coin(Clone)")
         {
-            Destroy(collision.gameObject);
+            other.GetComponent<Collider>().enabled = false;
+            Destroy(other.gameObject);
             GameManager.MyInstance.Score += 1;
             RunSpeed += speedIncrease;
             SoundManager.PlaySound("Coin");
